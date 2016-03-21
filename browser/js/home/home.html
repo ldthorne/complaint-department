@@ -1,0 +1,12 @@
+<section id="home">
+	<table align='center'>
+	<thead>
+		<td>Name</td>
+		<td>Phone number</td>
+	</thead>
+	<tr ng-repeat='member in members'>
+		<td>{{member.person.firstname + ' ' + member.person.lastname}}</td>
+		<td><a href="tel:{{member.phone}}">{{member.phone}}</td>
+	</tr>
+	</table>
+</section>
