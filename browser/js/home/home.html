@@ -1,12 +1,59 @@
 <section id="home">
-	<table align='center'>
-	<thead>
-		<td>Name</td>
-		<td>Phone number</td>
-	</thead>
-	<tr ng-repeat='member in members'>
-		<td>{{member.person.firstname + ' ' + member.person.lastname}}</td>
-		<td><a href="tel:{{member.phone}}">{{member.phone}}</td>
-	</tr>
-	</table>
+    <form class="col-lg-6 col-lg-offset-3 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 simple-form" name='address'>
+        <div class='form-group'>
+            <input class='form-control' type="text" placeholder='Enter your street address' ng-required='true' ng-model="user.address" id='inputLast'/>
+        </div>
+        <div class='form-group'>
+            <input class='form-control' type="number" minlength="5" maxlength="5" placeholder='Enter your zipcode' ng-required='true' ng-model="user.zip" id='inputLast' />
+        </div>
+        <input class='btn' ng-disabled="address.$invalid" type="submit" ng-click="sendAddress(user)" value="Submit" />
+    </form>
+
+    <table align='center'>
+        <thead>
+            <td><b>Name</b></td>
+            <td><b>Phone number</b></td>
+        </thead>
+        <tr ng-repeat='senator in senators'>
+            <td>{{senator.name}}</td>
+            <td><a href="tel:{{senator.phones[0]}}">{{senator.phones[0]}}</td>
+        </tr>
+    </table>
+    <table align='center'>
+        <thead>
+            <td><b>Name</b></td>
+            <td><b>Phone number</b></td>
+        </thead>
+        <tr ng-repeat='representative in representatives'>
+            <td>{{representative.name}}</td>
+            <td><a href="tel:{{representative.phones[0]}}">{{representative.phones[0]}}</td>
+        </tr>
+    </table>
+    <table align='center'>
+        <thead>
+            <td><b>Name</b></td>
+            <td><b>Phone number</b></td>
+        </thead>
+        <tr ng-repeat='cityCouncilperson in cityCouncilpeople'>
+            <td>{{cityCouncilperson.name}}</td>
+            <td><a href="tel:{{cityCouncilperson.phones[0]}}">{{cityCouncilperson.phones[0]}}</td>
+       </tr>
+    </table>
+
+   <form class="col-lg-6 col-lg-offset-3 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 simple-form" name='form'>
+        <div class='form-group'>
+            <input class='form-control' type="text" placeholder='Who did you call?' ng-required='true' ng-model="user.recipient" id='inputFirst' />
+        </div>
+        <div class='form-group'>
+            <input class='form-control' type="text" placeholder='What did you call about?' ng-required='true' ng-model="user.content" id='inputLast' />
+        </div>
+        <input class='btn' ng-disabled="form.$invalid" type="submit" ng-click="send(user)" value="Submit" />
+    </form>
+    <div class="col-lg-6 col-lg-offset-3 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+        <div ng-repeat="entry in entries">
+            <h3>Called: {{entry.recipient}}</h3>
+            <h3>About: {{entry.content}}</h3>
+            <hr>
+        </div>
+    </div>
 </section>

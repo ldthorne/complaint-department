@@ -4,15 +4,12 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/home/home.html',
         controller: 'HomeCtrl',
         resolve: {
-        	members: function(GovData){
-        		return GovData.getMembers()
-        		.then(function(res){
-        			return res;
-        		})
-        	},
         	location: function(PromiseGeolocation){
         		return PromiseGeolocation.getLocation();
-        	}
+        	},
+            entries: function(Entries){
+                return Entries.getEntries();
+            }
 
         }
     });

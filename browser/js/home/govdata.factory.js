@@ -1,8 +1,9 @@
-app.factory('GovData', function($http) {
+app.factory('Entries', function($http) {
     return {
-        getMembers: function() {
-            return $http.get('/api/govData').then(function(res) {
-                return res.data.objects
+        getEntries: function() {
+            return $http.get('/api/govData/entries')
+            .then(function(res) {
+                return res.data;
             })
         }
     }
